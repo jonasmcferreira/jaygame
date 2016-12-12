@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:tp="http://java.sun.com/jsf/composite">
+   <h:body>
+      <h2>Quest</h2>
+         <h:form>
+            <h2>
+               <h:outputText id="name" value="#{player.name !=null ? player.name : ''}"/><br></br>
+            </h2>
+
+            <span>Level: </span><h:outputText id="level" value="#{player.level!=null ? player.level : ''}"/><br></br>
+            <span>Health: </span><h:outputText id="health" value="#{player.health !=null ? player.health : ''}"/><br></br>
+            <span>Mana: </span><h:outputText id="mana" value="#{player.mana!=null ? player.mana : ''}"/><br></br>
+            <span>Gold: </span><h:outputText id="gold" value="#{player.health !=null ? player.gold : ''}"/><br></br>
+
+            <h:commandButton value="N" action="#{player.move('N')}" >
+
+            </h:commandButton>
+            <h:commandButton value="W" action="#{player.move('W')}" >
+
+            </h:commandButton>
+            <h:commandButton value="E" action="#{player.move('E')}" >
+
+            </h:commandButton>
+            <h:commandButton value="S" action="#{player.move('S')}" >
+
+            </h:commandButton>
+         </h:form>
+
+   </h:body>
+</html>

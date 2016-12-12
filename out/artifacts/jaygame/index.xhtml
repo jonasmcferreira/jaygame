@@ -9,14 +9,8 @@
       <h2>Start Quest</h2>
          <h:form>
             <h:inputText id="inputName" value="#{player.name}"></h:inputText>
-            <h:commandButton value="Start">
-               <f:ajax execute="inputName" render="name" />
+            <h:commandButton value="Start" action="quest" >
             </h:commandButton>
-            <h2>
-               <h:outputText id="name" value="#{player.name !=null ? player.name : ''}"/><br></br>
-               <h:outputText id="heath" value="#{player.health !=null ? player.health : ''}"/><br></br>
-               <h:outputText id="mana" value="#{player.mana!=null ? player.mana : ''}"/><br></br>
-            </h2>
          </h:form>
 
    </h:body>

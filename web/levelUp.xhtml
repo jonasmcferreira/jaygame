@@ -6,11 +6,14 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:tp="http://java.sun.com/jsf/composite">
    <h:body>
-      <h2>Start Quest</h2>
+      <h2>LevelUp</h2>
          <h:form>
-            <h:inputText id="inputName" value="#{player.name}"></h:inputText>
-            <h:commandButton value="Start" action="quest" >
-            </h:commandButton>
+            <h2>
+               <h:outputText id="name" value="#{player.name !=null ? player.name : ''}"/><br></br>
+            </h2>
+
+            <span>Level: </span><h:outputText id="level" value="#{player.level!=null ? player.level : ''}"/><br></br>
+
          </h:form>
 
    </h:body>
