@@ -2,6 +2,9 @@ package com.jonas.generator;
 
 
 import com.jonas.core.Direction;
+import com.jonas.domain.Player;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -10,6 +13,8 @@ import java.util.Collections;
  * Created by Jonas Ferreira on 06/12/2016.
  */
 public class Maze {
+
+    private static final Logger log = LogManager.getLogger(Maze.class);
 
     private static int x;
     private static int y;
@@ -45,12 +50,12 @@ public class Maze {
     }
 
     public boolean canIMove(int x, int y, Direction direction){
-        System.out.println("Called method canIMove:[x:"+x+"][y:"+y+"][d:"+direction+"]");
+        log.debug("Called method canIMove:[x:"+x+"][y:"+y+"][d:"+direction+"]");
 
         boolean canMove = false;
 
         if( x >= maze.length  || y >= maze[0].length){
-            System.out.println("coordinates [x: "+x+"][y:"+y+"] are outside the maze");
+            log.debug("coordinates [x: "+x+"][y:"+y+"] are outside the maze");
             return false;
         }
 
@@ -66,25 +71,25 @@ public class Maze {
 
     public void display() {
 
-        System.out.println(Arrays.deepToString(maze).replace(", [","\n"));
+        log.debug(Arrays.deepToString(maze).replace(", [","\n"));
 
         for (int i = 0; i < y; i++) {
             // draw the north edge
             for (int j = 0; j < x; j++) {
-                System.out.print((maze[j][i] & 1) == 0 ? "+---" : "+   ");
+                log.debug((maze[j][i] & 1) == 0 ? "+---" : "+   ");
             }
-            System.out.println("+");
+            log.debug("+");
             // draw the west edge
             for (int j = 0; j < x; j++) {
-                System.out.print((maze[j][i] & 8) == 0 ? "|   " : "    ");
+                log.debug((maze[j][i] & 8) == 0 ? "|   " : "    ");
             }
-            System.out.println("|");
+            log.debug("|");
         }
         // draw the bottom line
         for (int j = 0; j < x; j++) {
-            System.out.print("+---");
+            log.debug("+---");
         }
-        System.out.println("+");
+        log.debug("+");
 
 
     }

@@ -3,6 +3,8 @@ package com.jonas.domain;
 import com.jonas.core.Constants;
 import com.jonas.core.Direction;
 import com.jonas.generator.Maze;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -15,6 +17,8 @@ import javax.faces.bean.SessionScoped;
 @ManagedBean(name = "player")
 @SessionScoped
 public class Player {
+
+    private static final Logger log = LogManager.getLogger(Player.class);
 
     private String name;
 
@@ -31,21 +35,21 @@ public class Player {
     private int[][] visited;
 
     public Player() {
-        System.out.println("Called Player constructor");
+        log.debug("Called Player constructor");
 
         this.health = Constants.STARTING_HEALTH;
         this.mana  = Constants.STARTING_MANA;
         this.gold = Constants.STARTING_GOLD;
         this.level = 1;
-        this.xCoordinate = 0;
-        this.yCoordinate = 0;
+        this.xCoordinate = Constants.STARTING_X_COORDINATE;
+        this.yCoordinate = Constants.STARTING_Y_COORDINATE;
         this.maze = new Maze(this.level);
     }
 
 
 
     public String move(Direction d){
-        System.out.println("Called method move:[d:"+d+"]");
+        log.debug("Called method move:[d:"+d+"]");
 
         if(maze.canIMove(xCoordinate,yCoordinate,d)){
             switch (d) {
@@ -61,12 +65,12 @@ public class Player {
                 case W:
                     xCoordinate--;
                     break;
-                default: System.out.println("unknown [direction:"+d+"]");
+                default: log.warn("unknown [direction:"+d+"]");
                     break;
             }
         }
 
-        System.out.println("New coordinate [xCoordinate:"+xCoordinate+"][yCoordinate:"+yCoordinate+"]");
+        log.info("New coordinate [xCoordinate:"+xCoordinate+"][yCoordinate:"+yCoordinate+"]");
 
         if(xCoordinate == level+3 && yCoordinate == level+3){
             return "levelUp";
