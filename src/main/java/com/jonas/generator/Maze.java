@@ -2,7 +2,6 @@ package com.jonas.generator;
 
 
 import com.jonas.core.Direction;
-import com.jonas.domain.Player;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
